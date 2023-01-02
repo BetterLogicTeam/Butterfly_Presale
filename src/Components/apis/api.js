@@ -18,16 +18,19 @@ const networks = {
 const changeNetwork = async ({ networkName }) => {
   try {
     if (!window.ethereum) throw new Error("No crypto wallet found");
+    const web3 = window.web3;
     await window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [
-        {
-          ...networks[networkName],
-        },
-      ],
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: web3.utils.toHex(5) }]
     });
+    window.location.reload();
+
+
+
+
+
   } catch (err) {
-    console.log("not found");
+    console.log(err, "not found");
   }
 };
 const handleNetworkSwitch = async (networkName) => {

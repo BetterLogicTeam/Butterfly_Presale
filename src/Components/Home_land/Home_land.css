@@ -205,4 +205,8 @@
     border: 2px solid #009393 !important ;
     background-color: transparent !important;
     color:#009393 !important ;
+    
+}
+.iso_btn{
+    width: 15rem !important;
 }

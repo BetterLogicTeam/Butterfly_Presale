@@ -1,57 +1,41 @@
 // import React from 'react'
-import "./NavBar_header.css"
-import { loadWeb3 } from '../apis/api';
-import React, { useEffect, useState } from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import abort_logo from "../Assets/abort_logo.svg"
-import head1 from "../Assets/head1.svg"
-import head2 from "../Assets/head2.svg"
-import head3 from "../Assets/head3.svg"
-import head4 from "../Assets/head4.svg"
-import head5 from "../Assets/head5.svg"
-import head6 from "../Assets/head6.svg"
+import "./NavBar_header.css";
+import { loadWeb3 } from "../apis/api";
+import React, { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import abort_logo from "../Assets/abort_logo.svg";
+import head1 from "../Assets/head1.svg";
+import head2 from "../Assets/head2.svg";
+import head3 from "../Assets/head3.svg";
+import head4 from "../Assets/head4.svg";
+import head5 from "../Assets/head5.svg";
+import head6 from "../Assets/head6.svg";
 
-function NavBar_header() {
-  const [BtTxt, setBtTxt] = useState("Connect")
+function NavBar_header({ BtTxt }) {
+  // const [BtTxt, setBtTxt] = useState("Connect")
 
-  const getaccount = async () => {
-    let acc = await loadWeb3();
-    if (acc == "No Wallet") {
-      // toast.error('please install metamask')
-      setBtTxt("please install metamask")
-
-    }
-    else if (acc == "Wrong Network") {
-      // toast.error('Wrong Network')
-      setBtTxt("Wrong Network")
-    } else {
-  
-      let myAcc = acc?.substring(0, 4) + "..." + acc?.substring(acc?.length - 4);
-     
-      setBtTxt(myAcc);
-
-
-    }
-  }
-
-
-  useEffect(() => {
-    getaccount()
-  })
   return (
     <div>
-         <Navbar collapseOnSelect expand="lg" bg="light" className='' variant="dark">
-      <Container className='nav_bar_abort'>
-        <Navbar.Brand href="#home"><img src={abort_logo} alt="" /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            {/* <Nav.Link href="#features">Features</Nav.Link> */}
-            {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-            {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="light"
+        className=""
+        variant="dark"
+      >
+        <Container className="nav_bar_abort">
+          <Navbar.Brand href="#home">
+            <img src={abort_logo} alt="" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              {/* <Nav.Link href="#features">Features</Nav.Link> */}
+              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+              {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
@@ -62,32 +46,35 @@ function NavBar_header() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown> */}
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">
+            </Nav>
+            <Nav>
+              <Nav.Link href="#deets">
                 <div className="socials_icons">
-                    <div className="icons_img">
-                        <img src={head1} alt="" />
-                        <img src={head2} alt="" />
-                        <img src={head3} alt="" />
-                        <img src={head4} alt="" />
-                        <img src={head5} alt="" />
-                        <img src={head6} alt="" />
-
-                    </div>
+                  <div className="icons_img">
+                    <img src={head1} alt="" />
+                    <img src={head2} alt="" />
+                    <img src={head3} alt="" />
+                    <img src={head4} alt="" />
+                    <img src={head5} alt="" />
+                    <img src={head6} alt="" />
+                  </div>
                 </div>
-            </Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-             <button className='wallet_button_header'>{BtTxt}</button>
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-      
+              </Nav.Link>
+              {BtTxt == "Connect" ? (
+                <></>
+              ) : (
+                <>
+                  <Nav.Link eventKey={2} href="#memes">
+                    <button className="wallet_button_header">{BtTxt}</button>
+                  </Nav.Link>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
-  )
+  );
 }
 
-
-export default NavBar_header
+export default NavBar_header;
