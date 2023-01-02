@@ -1,6 +1,4 @@
-// import React from 'react'
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { loadWeb3 } from '../apis/api';
@@ -8,32 +6,7 @@ import eth from "../Assets/eth.svg"
 import dt from "../Assets/dt.svg"
 
 function Buy_tokens(props ,connect) {
-  const [BtTxt, setBtTxt] = useState("Connect")
-
-  const getaccount = async () => {
-    let acc = await loadWeb3();
-    if (acc == "No Wallet") {
-      // toast.error('please install metamask')
-      setBtTxt("please install metamask")
-
-    }
-    else if (acc == "Wrong Network") {
-      // toast.error('Wrong Network')
-      setBtTxt("Wrong Network")
-    } else {
   
-      let myAcc = acc?.substring(0, 4) + "..." + acc?.substring(acc?.length - 4);
-     
-      setBtTxt(myAcc);
-
-
-    }
-  }
-
-
-  useEffect(() => {
-    getaccount()
-  })
   return (
     <div>
              <Modal
