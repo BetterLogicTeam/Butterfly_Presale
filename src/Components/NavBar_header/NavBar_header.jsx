@@ -1,5 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import "./NavBar_header.css"
+import { loadWeb3 } from '../apis/api';
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -13,6 +15,32 @@ import head5 from "../Assets/head5.svg"
 import head6 from "../Assets/head6.svg"
 
 function NavBar_header() {
+  const [BtTxt, setBtTxt] = useState("Connect")
+
+  const getaccount = async () => {
+    let acc = await loadWeb3();
+    if (acc == "No Wallet") {
+      // toast.error('please install metamask')
+      setBtTxt("please install metamask")
+
+    }
+    else if (acc == "Wrong Network") {
+      // toast.error('Wrong Network')
+      setBtTxt("Wrong Network")
+    } else {
+  
+      let myAcc = acc?.substring(0, 4) + "..." + acc?.substring(acc?.length - 4);
+     
+      setBtTxt(myAcc);
+
+
+    }
+  }
+
+
+  useEffect(() => {
+    getaccount()
+  })
   return (
     <div>
          <Navbar collapseOnSelect expand="lg" bg="light" className='' variant="dark">
@@ -50,7 +78,7 @@ function NavBar_header() {
                 </div>
             </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-             <button className='wallet_button_header'>Connect Wallet</button>
+             <button className='wallet_button_header'>{BtTxt}</button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -60,5 +88,6 @@ function NavBar_header() {
     </div>
   )
 }
+
 
 export default NavBar_header
