@@ -1,0 +1,200 @@
+.main_home_land_bg{
+    background-image: url(../Assets/home_bg.svg);
+    height: 700px;
+    padding: 50px 20px  !important;
+}
+
+
+.fisrt_heading{
+    font-size: 18px;
+    font-family: poppins-semibold;
+    padding-bottom: 20px;
+    color: #19b1bd;
+}
+
+
+.main_home_heading{
+    font-size: 46px;
+    color: #000;
+    font-family: poppins-semibold;
+    margin-top: 12px;  
+    font-weight: bold;
+}
+
+.home_land_para{
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    line-height: 160%;
+    font-family: poppins-regular;
+    padding-top: 6px;
+}
+
+.play_headig{
+    font-family: poppins-semibold;
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.right_content_card{
+    background-color: #131317;
+    border-radius: 10px;
+    min-height: 500px;
+    margin: auto;
+    width: 320px;
+    padding: 10px 0px;
+}
+
+
+.card_heading_span{
+    color: white !important;
+    font-weight: bold;
+    font-size: 28px !important;
+    text-transform:capitalize  !important;
+
+}
+
+
+.text_days{
+    color: white !important;
+    margin-bottom: 0px;
+    line-height: 30px !important;
+}
+
+
+.progress_number{
+    color: #e25c5c !important;
+    font-weight: bold !important;
+}
+
+.lower_pro{
+    background-color: #000!important;
+    border: 1px solid #000!important;
+    border-radius: 24px!important;
+    height: 16px;
+    margin: 12px 42px 0!important;
+}
+
+
+.upper_pro{
+    width: 89.87%;
+    background: #e25c5c;
+    border-radius: 10px;
+    margin: 1px 0;
+    transition: width .1s ease,background-color .1s ease;
+    display: block;
+    line-height: 1;
+    position: relative;
+}
+
+
+.box_text
+{
+    border: 1px solid #d0dbff;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 12px 42px 0!important; 
+}
+
+
+.connect_to_wallet_home{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background: #19b1bd;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: all .25s ease-in-out;
+    font-weight: 500;
+    color: white !important;
+    padding: 10px 20px !important;
+    /* width: 100% !important; */
+    /* text-align: center !important; */
+
+}
+
+
+.connect_to_wallet_bg{
+    background: #19b1bd !important; 
+}
+
+
+.metamask_pic{
+    width: 60px;
+    height: 60px ;
+}
+
+.footer{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.labal_heading{
+    color: rgb(75, 51, 42) !important;
+}
+
+.seeling_tokens{
+    position: relative !important;
+}
+
+
+.selling_input{
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-family: poppins-regular,sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.2;
+    border-radius: 0.4rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.input_img{
+    position: absolute;
+    top: 54%;
+    right: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+
+.selling_input{
+    padding-right: 7.5rem !important;
+    background-color: #fff !important;
+    border: 2px solid #009393 !important;
+}
+
+
+.dt2{
+    width: 37px !important ;
+    height: 37px !important;
+}
+
+
+.convert_to_eth{
+    border:none !important;
+    outline: none !important;
+    width: 100%  !important;
+    border-radius: 10px;
+    background: #19b1bd;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: all .25s ease-in-out;
+    font-weight: 500;
+    color: white !important;
+    padding: 20px  !important;
+}
+
+
+.connect_to_wallet_bgh{
+    background: #009393 !important;
+    color: #fff !important;
+    padding: 20px !important;
+    /* border-radius: 0.5rem 0.5rem 0 0!important; */
+}
