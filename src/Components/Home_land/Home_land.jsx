@@ -11,6 +11,7 @@ import usdt from "../Assets/usdt.svg"
 function Home_land() {
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShow1, setModalShow1] = React.useState(false);
+    const [modalShow2, setModalShow2] = React.useState(false);
   return (
     <div>
         <div className="container-fluid main_home_land_bg">
@@ -51,7 +52,7 @@ function Home_land() {
     </div>
 
     <div className='d-flex justify-content-center my-4'>
-        <button onClick={() => setModalShow(true)} className='connect_to_wallet_home'>connect  wallet</button>
+        <button onClick={() => setModalShow(true)} className='connect_to_wallet_home iso_btn'>connect  wallet</button>
         {/* <Button variant="primary" onClick={() => setModalShow(true)}>
         Launch vertically centered modal
       </Button> */}
@@ -62,7 +63,7 @@ function Home_land() {
       />
     </div>
     <div className='d-flex justify-content-center my-4'>
-        <button onClick={() => setModalShow1(true)} className='connect_to_wallet_home'> <img src={eth} alt="" /> Buy with ETH</button>
+        <button onClick={() => setModalShow1(true)} className='connect_to_wallet_home iso_btn'> <img src={eth} alt="" /> Buy with ETH</button>
         {/* <Button variant="primary" onClick={() => setModalShow(true)}>
         Launch vertically centered modal
       </Button> */}
@@ -74,15 +75,15 @@ function Home_land() {
       />
     </div>
     <div className='d-flex justify-content-center my-4'>
-        <button  onClick={() => setModalShow1(true)} className='connect_to_wallet_home'> <img src={usdt} alt="" /> Buy with USDT</button>
+        <button  onClick={() => setModalShow2(true)} className='connect_to_wallet_home iso_btn'> <img src={usdt} alt="" /> Buy with USDT</button>
         {/* <Button variant="primary" onClick={() => setModalShow(true)}>
         Launch vertically centered modal
       </Button> */}
 
       <Buy_tokens 
        connect='convert to USDT'
-        show={modalShow1}
-        onHide={() => setModalShow1(false)}
+        show={modalShow2}
+        onHide={() => setModalShow2(false)}
       />
     </div>
 

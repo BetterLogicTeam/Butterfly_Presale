@@ -45,7 +45,7 @@ function Buy_tokens(props ,connect) {
       <Modal.Footer className=' py-2 d-block'>
         {/* <Button onClick={props.onHide}>Close</Button> */}
 <div className="d-flex justify-content-center">
-    <button  onClick={props.onHide} className=' convert_to_eth'>{props.connect}</button>
+    <button  onClick={props.onHide} className=' convert_to_eth iso_btn'>{props.connect}</button>
 
 </div>
       </Modal.Footer>
