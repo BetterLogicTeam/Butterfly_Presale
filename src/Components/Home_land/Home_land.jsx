@@ -8,11 +8,25 @@ import Buy_tokens from "../Buy_tokens/Buy_tokens";
 import usdt from "../Assets/usdt.svg";
 import metamask from "../Assets/metamask.png";
 import { loadWeb3 } from "../apis/api";
+import {
+  contractabi,
+  ico_contract,
+  tokenabi,
+  token_contract,
+  USDTabi,
+  USDT_contract,
+} from "../../Contracts/contract";
 
 function Home_land({BtTxt,setBtTxt}) {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow1, setModalShow1] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
+  const [usdt, setUSDT] = useState("loading");
+  const [ETH, setETH] = useState("loading");
+  const [TokenBalance, setTokenBalance] = useState("loading");
+
+
+
 
   const getaccount = async () => {
     let acc = await loadWeb3();
@@ -27,6 +41,31 @@ function Home_land({BtTxt,setBtTxt}) {
         acc?.substring(0, 4) + "..." + acc?.substring(acc?.length - 4);
 
       setBtTxt(myAcc);
+      const web3 = window.web3; 
+      let ICOContractOf = new web3.eth.Contract(contractabi, ico_contract);
+      let USTContractOf = new web3.eth.Contract(USDTabi, USDT_contract);
+      let tokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
+
+      let getUSDTValue = await USTContractOf.methods.balanceOf(ico_contract).call();
+      let gettokenValue = await tokenContractOf.methods.balanceOf(ico_contract).call();
+
+     let USDTvalue = (getUSDTValue/1000000).toString();
+     let tokenvalue = web3.utils.fromWei(gettokenValue);
+      let tokenpercentag= (tokenvalue/200000000*100);
+      let tokenpercentag1= 100-tokenpercentag;
+
+     setUSDT(USDTvalue);
+     console.log(USDTvalue,"USDTValue");
+     let ETHBalance=web3.eth.getBalance(ico_contract.toString())
+     console.log(ETHBalance,"ETHBalance");
+     setETH(ETHBalance.PromiseResult);
+     setTokenBalance(tokenpercentag1)
+    
+
+      
+
+
+     
     }
   };
 
@@ -62,7 +101,7 @@ function Home_land({BtTxt,setBtTxt}) {
                 4 Days 8 Hours 59 Minutes remaining until presale ends
               </div>
               <div className="progress_bar_nav mt-3">
-                <h4 className="progress_number">89.87% SOLD</h4>
+                <h4 className="progress_number">{TokenBalance}% SOLD</h4>
                 <div className="lower_pro d-flex">
                   <div className="upper_pro"></div>
                 </div>
@@ -70,7 +109,7 @@ function Home_land({BtTxt,setBtTxt}) {
                 <div className="usdt_contntet text-white text-bold">
                   <span>
                     USDT Raised: <br />
-                    $12,003,270.56 / $13,420,750
+                    {usdt} $ / {ETH} ETH
                   </span>
                 </div>
 

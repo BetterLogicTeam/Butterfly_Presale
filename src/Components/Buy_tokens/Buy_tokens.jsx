@@ -25,10 +25,14 @@ function Buy_tokens(props, connect) {
   const BuyWithEth = async (data) => {
     try {
       const web3 = window.web3;
+      let accounts;
+      accounts = await web3.eth.getAccounts();
       let nftContractOf = new web3.eth.Contract(contractabi, ico_contract);
       let TokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
 
       console.log("getValue", data);
+      console.log("accounts", accounts);
+
       let value = web3.utils.toWei(data.toString());
       let getValue = await nftContractOf.methods.getToken(value).call();
       setGetEthIput(data);
@@ -39,7 +43,7 @@ function Buy_tokens(props, connect) {
       BalanceOf = web3.utils.fromWei(BalanceOf.toString());
       let ethBalance
       
-      web3.eth.getBalance("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", function(err, result) {
+      web3.eth.getBalance(accounts.toString(), function(err, result) {
         if (err) {
           console.log(err)
         } else {
