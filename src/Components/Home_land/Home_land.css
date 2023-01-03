@@ -1,13 +1,18 @@
 .main_home_land_bg{
-    background-image: url(../Assets/home_bg.svg);
-    height: 700px;
+    background-image: url(../Assets/bg5.png);
+    /* height: 700px; */
     padding: 50px 20px  !important;
+    height: 100vh !important;
+    /* background-position: 20% 40%; */
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
 }
 
 
 .fisrt_heading{
     font-size: 18px;
-    font-family: poppins-semibold;
+   font-family: 'Poppins', sans-serif;
     padding-bottom: 20px;
     color: #19b1bd;
 }
@@ -16,7 +21,7 @@
 .main_home_heading{
     font-size: 46px;
     color: #000;
-    font-family: poppins-semibold;
+   font-family: 'Poppins', sans-serif;
     margin-top: 12px;  
     font-weight: bold;
 }
@@ -31,7 +36,7 @@
 }
 
 .play_headig{
-    font-family: poppins-semibold;
+   font-family: 'Poppins', sans-serif;
     color: #000;
     font-size: 16px;
     margin: 0;
@@ -110,7 +115,7 @@
     transition: all .25s ease-in-out;
     font-weight: 500;
     color: white !important;
-    padding: 10px 20px !important;
+    padding: 13px 20px !important;
     /* width: 100% !important; */
     /* text-align: center !important; */
 
@@ -209,4 +214,18 @@
 }
 .iso_btn{
     width: 15rem !important;
+}
+
+@media only screen and (max-width:600px){
+    .main_home_land_bg{
+        background-image: url(../Assets/bg5.png);
+        /* height: 700px; */
+        padding: 50px 20px  !important;
+        height: auto !important;
+        /* background-position: 20% 40%; */
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+    
+    }
+    
 }

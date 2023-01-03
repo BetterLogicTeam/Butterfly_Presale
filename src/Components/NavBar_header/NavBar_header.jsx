@@ -13,6 +13,7 @@ import head3 from "../Assets/head3.svg";
 import head4 from "../Assets/head4.svg";
 import head5 from "../Assets/head5.svg";
 import head6 from "../Assets/head6.svg";
+import bf from "../Assets/bf.png"
 
 function NavBar_header({ BtTxt }) {
   // const [BtTxt, setBtTxt] = useState("Connect")
@@ -28,7 +29,7 @@ function NavBar_header({ BtTxt }) {
       >
         <Container className="nav_bar_abort">
           <Navbar.Brand href="#home">
-            <img src={abort_logo} alt="" />
+            <img src={bf} alt="" className="logo_nav" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

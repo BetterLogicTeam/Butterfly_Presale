@@ -5,7 +5,7 @@ import Connect_wallet from "../Connect_wallet/Connect_wallet";
 import Button from "react-bootstrap/Button";
 import eth from "../Assets/eth.svg";
 import Buy_tokens from "../Buy_tokens/Buy_tokens";
-import usdt from "../Assets/usdt.svg";
+import usd from "../Assets/usd.svg";
 import metamask from "../Assets/metamask.png";
 import { loadWeb3 } from "../apis/api";
 import {
@@ -91,23 +91,17 @@ function Home_land({BtTxt,setBtTxt}) {
       <div className="container-fluid main_home_land_bg">
         <div className="row">
           <div className="col-md-6 left_connent text-start">
-            <span className="fisrt_heading">
-              Built by Traders, for Traders.
-            </span>
-            <h1 className="main_home_heading">
-              Maximise Your Trading Success with the Leading Crypto Signals, Bot
-              & Analytics Platform Now.
+            
+            <h1 className="main_home_heading text-white">
+            Welcome to the PreSale of Boston Dynamics Inu 
             </h1>
-            <p className="home_land_para">
-              Dash 2 Trade is a crypto analytics platform built by traders, for
-              traders. Dash 2 Trade provides trading signals, social analytics
-              on-chain data to maximise your profits. Join our community of
-              70,000 traders and invest in the D2T presale now
+            <p className="home_land_para text-white">
+            Swap your ETH for $BD1NU at a very discounted price in this Prosaic. You will not regret it. You will get rich. This is an example text. this text will be changes. for test design purposes only.
             </p>
-            <div className="d-flex">
+            {/* <div className="d-flex">
               <img src={play} alt="" />
               <h3 className="play_headig">Watch a short Explainer Video</h3>
-            </div>
+            </div> */}
           </div>
 
           <div className="col-md-6 right_coonent mt-4 mt-md-0">
@@ -159,7 +153,7 @@ function Home_land({BtTxt,setBtTxt}) {
                         className="connect_to_wallet_home iso_btn"
                       >
                         {" "}
-                        <img src={usdt} alt="" /> Buy with USDT
+                        <img src={usd} alt="" /> Buy with USDT
                       </button>
 
                       <Buy_tokens
