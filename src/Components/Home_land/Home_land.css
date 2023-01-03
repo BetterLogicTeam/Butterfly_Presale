@@ -80,7 +80,7 @@
 
 
 .upper_pro{
-    width: 89.87%;
+    width: var(--width);
     background: #e25c5c;
     border-radius: 10px;
     margin: 1px 0;

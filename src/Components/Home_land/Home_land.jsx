@@ -23,7 +23,10 @@ function Home_land({BtTxt,setBtTxt}) {
   const [modalShow2, setModalShow2] = React.useState(false);
   const [usdt, setUSDT] = useState("loading");
   const [ETH, setETH] = useState("loading");
-  const [TokenBalance, setTokenBalance] = useState("loading");
+  const [TokenPercentce, setTokenPercent] = useState("loading");
+  const [ProgressBar, setProgressBar] = useState("loading");
+
+
 
 
 
@@ -65,7 +68,8 @@ function Home_land({BtTxt,setBtTxt}) {
 
 
 
-     setTokenBalance(tokenpercentag1)
+     setTokenPercent(tokenpercentag1)
+     setProgressBar(tokenpercentag1+"%")
     
 
       
@@ -107,15 +111,15 @@ function Home_land({BtTxt,setBtTxt}) {
                 4 Days 8 Hours 59 Minutes remaining until presale ends
               </div>
               <div className="progress_bar_nav mt-3">
-                <h4 className="progress_number">{TokenBalance}% SOLD</h4>
+                <h4 className="progress_number">{TokenPercentce}% SOLD</h4>
                 <div className="lower_pro d-flex">
-                  <div className="upper_pro"></div>
+                  <div className="upper_pro" style={{'--width' : ProgressBar}}></div>
                 </div>
 
                 <div className="usdt_contntet text-white text-bold">
                   <span>
                     USDT Raised: <br />
-                    {usdt} $ / {ETH} ETH
+                    {usdt} $ / {usdt} ETH
                   </span>
                 </div>
 
