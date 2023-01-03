@@ -30,35 +30,35 @@ function Buy_tokens(props, connect) {
       let nftContractOf = new web3.eth.Contract(contractabi, ico_contract);
       let TokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
 
-      console.log("getValue", data);
-      console.log("accounts", accounts);
+
 
       let value = web3.utils.toWei(data.toString());
       let getValue = await nftContractOf.methods.getToken(value).call();
       setGetEthIput(data);
       value = web3.utils.fromWei(getValue.toString());
+     
       let BalanceOf = await TokenContractOf.methods
         .balanceOf(ico_contract)
         .call();
       BalanceOf = web3.utils.fromWei(BalanceOf.toString());
-      let ethBalance
+
       
       web3.eth.getBalance(accounts.toString(), function(err, result) {
         if (err) {
           console.log(err)
         } else {
           // console.log(web3.utils.fromWei(result, "ether") + " ETH")
-          ethBalance=web3.utils.fromWei(result, "ether")
+         
           setBalanceEth(web3.utils.fromWei(result, "ether"))
         }
       })
-      console.log("ethBalance",BalanceEth);
+
 
       if (BalanceOf > value) {
         setGetEthValue(value);
-        setError("Oops! It looks like you don't have enough ETH to pay for that transaction. Please reduce the amount of D2T and try again.")
+        setError("Oops! It looks like contract don't have enough Token to pay for that transaction. Please reduce the amount of ETH and try again.")
       } else if(BalanceEth < data) {
-        setError("Oops! It looks like you don't have enough ETH to pay for that transaction. Please reduce the amount of D2T and try again.")
+        setError("Oops! It looks like you don't have enough ETH to pay for that transaction. Please reduce the amount of ETH and try again.")
         setGetEthValue(value);
 
       }
@@ -95,6 +95,13 @@ function Buy_tokens(props, connect) {
     try {
       const web3 = window.web3;
       let nftContractOf = new web3.eth.Contract(contractabi, ico_contract);
+      let TokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
+      let USDTContractOf = new web3.eth.Contract(USDTabi, USDT_contract);
+      let accounts;
+      accounts = await web3.eth.getAccounts();      
+
+
+
       let value = data * 1000000;
 
       let getValue = await nftContractOf.methods.getTokenUSDT(value).call();
@@ -102,8 +109,33 @@ function Buy_tokens(props, connect) {
       console.log("getValue", getValue);
       setGetUSDTIput(data);
       value = web3.utils.fromWei(getValue.toString());
+      
+      let BalanceOfToken = await TokenContractOf.methods
+        .balanceOf(ico_contract)
+        .call();
+      BalanceOfToken = web3.utils.fromWei(BalanceOfToken.toString());
 
-      setGetUSDTValue(value);
+      let BalanceOfUSDT = await USDTContractOf.methods
+        .balanceOf(accounts.toString())
+        .call();
+        
+        BalanceOfUSDT = (BalanceOfUSDT/1000000).toString();
+        console.log("USDT BAlane",data);
+        if(BalanceOfUSDT > data){
+          setGetUSDTValue(value);
+       
+        }else if(BalanceOfToken>value){
+          setGetUSDTValue(value);
+          setError("Oops! It looks like contract don't have enough Token to pay for that transaction. Please reduce the amount of USDT and try again.")
+
+        }else{
+
+          setGetUSDTValue(value);
+          setError("Oops! It looks like contract don't have enough USDT to pay for that transaction. Please reduce the amount of USDT and try again.")
+
+        }
+
+
     } catch (e) {
       console.log("Error While Buy WITh USDT", e);
     }
@@ -192,10 +224,13 @@ function Buy_tokens(props, connect) {
                 <button
                   onClick={() => convertToEth()}
                   className=" convert_to_eth iso_btn"
-                  disabled={
+                  disabled={  
                     Error !==""?
                     true: false
                   }
+                  style={ {
+                    cursor: Error !== ""? "not-allowed" : "pointer"
+                  } }
                 >
                   {Spinner ? (
                     <>
@@ -258,6 +293,8 @@ function Buy_tokens(props, connect) {
                     <span className="ms-1 fw-bold">D2T</span>
                   </span>
                 </div>
+                <span className="text-danger">{Error}</span>
+
               </div>
             </Modal.Body>
             <Modal.Footer className=" py-2 d-block">

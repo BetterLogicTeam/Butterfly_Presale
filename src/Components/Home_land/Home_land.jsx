@@ -24,7 +24,7 @@ function Home_land({BtTxt,setBtTxt}) {
   const [usdt, setUSDT] = useState("loading");
   const [ETH, setETH] = useState("loading");
   const [TokenPercentce, setTokenPercent] = useState("loading");
-  const [ProgressBar, setProgressBar] = useState("loading");
+
 
 
 
@@ -68,14 +68,8 @@ function Home_land({BtTxt,setBtTxt}) {
      setETH(ETHValue);
   
 
-
-
-
-
-
-
      setTokenPercent(tokenpercentag1)
-     setProgressBar(tokenpercentag1+"%")
+   
     
 
       
@@ -113,7 +107,7 @@ function Home_land({BtTxt,setBtTxt}) {
               <div className="progress_bar_nav mt-3">
                 <h4 className="progress_number">{TokenPercentce}% SOLD</h4>
                 <div className="lower_pro d-flex">
-                  <div className="upper_pro" style={{'--width' : ProgressBar}}></div>
+                  <div className="upper_pro" style={{'--width' : `${TokenPercentce}%`}}></div>
                 </div>
 
                 <div className="usdt_contntet text-white text-bold">
