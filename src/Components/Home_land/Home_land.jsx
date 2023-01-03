@@ -56,9 +56,15 @@ function Home_land({BtTxt,setBtTxt}) {
 
      setUSDT(USDTvalue);
      console.log(USDTvalue,"USDTValue");
+
+
+     
      let ETHBalance=web3.eth.getBalance(ico_contract.toString())
      console.log(ETHBalance,"ETHBalance");
-     setETH(ETHBalance.PromiseResult);
+     setETH(ETHBalance);
+
+
+
      setTokenBalance(tokenpercentag1)
     
 
