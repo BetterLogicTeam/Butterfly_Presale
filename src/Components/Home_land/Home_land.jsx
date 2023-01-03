@@ -62,9 +62,15 @@ function Home_land({BtTxt,setBtTxt}) {
 
 
      
-     let ETHBalance=web3.eth.getBalance(ico_contract.toString())
-     console.log(ETHBalance,"ETHBalance");
-     setETH(ETHBalance);
+     let ETHBalance=await web3.eth.getBalance(ico_contract.toString());
+     let ETHValue = web3.utils.fromWei(ETHBalance);
+     console.log(ETHValue,"ETHBalance");
+     setETH(ETHValue);
+  
+
+
+
+
 
 
 
@@ -119,7 +125,7 @@ function Home_land({BtTxt,setBtTxt}) {
                 <div className="usdt_contntet text-white text-bold">
                   <span>
                     USDT Raised: <br />
-                    {usdt} $ / {usdt} ETH
+                    {usdt} $ / {ETH} ETH
                   </span>
                 </div>
 
