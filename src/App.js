@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-    <NavBar_header BtTxt={BtTxt} />
+    {/* <NavBar_header BtTxt={BtTxt} /> */}
     <Home_land BtTxt={BtTxt}  setBtTxt={setBtTxt}  />
     </div>
   );

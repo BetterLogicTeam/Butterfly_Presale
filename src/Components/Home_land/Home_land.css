@@ -1,8 +1,8 @@
 .main_home_land_bg{
     background-image: url(../Assets/bg5.png);
     /* height: 700px; */
-    padding: 50px 20px  !important;
-    height: 100vh !important;
+    padding: 80px 20px  !important;
+    height: 125vh !important;
     /* background-position: 20% 40%; */
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -228,5 +228,24 @@
         background-size: cover !important;
     
     }
+    .right_content_card{
+        background-color: #131317;
+        border-radius: 10px;
+        min-height: 500px;
+        margin: auto;
+        width: 100%;
+        padding: 10px 0px;
+    }
     
+}
+
+
+.new_btn{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.new_btn p{
+    text-decoration: underline;
+    font-weight: bold;
 }

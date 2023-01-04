@@ -49,7 +49,7 @@ function NavBar_header({ BtTxt }) {
             </NavDropdown> */}
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">
+              {/* <Nav.Link href="#deets">
                 <div className="socials_icons">
                   <div className="icons_img">
                     <img src={head1} alt="" />
@@ -60,7 +60,7 @@ function NavBar_header({ BtTxt }) {
                     <img src={head6} alt="" />
                   </div>
                 </div>
-              </Nav.Link>
+              </Nav.Link> */}
               {BtTxt == "Connect" ? (
                 <></>
               ) : (

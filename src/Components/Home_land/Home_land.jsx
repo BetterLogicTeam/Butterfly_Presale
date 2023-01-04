@@ -171,6 +171,10 @@ function Home_land({ BtTxt, setBtTxt }) {
                         onHide={() => setModalShow(false)}
                       /> */}
                     </div>
+                    <div className="new_btn text-white">
+                      <p>How to Buy</p>
+                      <p>New to Crypto?</p>
+                    </div>
                   </>
                 )}
               </div>
