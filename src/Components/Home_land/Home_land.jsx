@@ -16,27 +16,9 @@ import {
   USDTabi,
   USDT_contract,
 } from "../../Contracts/contract";
-import Web3Modal from "web3modal";
-import Web3 from "web3";
-import { ethers } from "ethers";
-import {CoinbaseWalletSDK} from '@coinbase/wallet-sdk'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-// import { signIn } from 'next-auth/react';
-import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi';
-// import { useRouter } from 'next/router';
-// import { useAuthRequestChallengeEvm } from '@moralisweb3/next';
 
-const providerOptions = {
-  coinbasewallet:{
-    package:CoinbaseWalletSDK,
-    options:{
-      appName:"Butterfly",
-      // infuraId:{3:"https://ropsten.infura.io/v3/fefnefnesfe"}
-      infuraId:"https://ipfs.infura.io:5001/api/v0"
 
-    }
-  }
-};
+
 
 function Home_land({ BtTxt, setBtTxt }) {
   const [modalShow, setModalShow] = React.useState(false);
@@ -46,19 +28,7 @@ function Home_land({ BtTxt, setBtTxt }) {
   const [ETH, setETH] = useState("loading");
   const [TokenPercentce, setTokenPercent] = useState("loading");
 
-  const connectWallet = async () => {
-    try {
-      let web3modal = new Web3Modal({
-        cacheProvider: true,
-        providerOptions,
-      });
-      const web3modalInstance=await web3modal.connect()
-      const web3modalProvider= new ethers.providers.Web3Provider(web3modalInstance)
-      console.log("web3modalProvider", web3modalProvider);
-    } catch (e) {
-      console.log("Error While connect Wallet", e);
-    }
-  };
+ 
 
   const getaccount = async () => {
     let acc = await loadWeb3();
