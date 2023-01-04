@@ -12,6 +12,7 @@ import {
   USDTabi,
   USDT_contract,
 } from "../../Contracts/contract";
+import { toast } from "react-toastify";
 
 function Buy_tokens(props, connect) {
   const [GetEthValue, setGetEthValue] = useState(0);
@@ -84,6 +85,7 @@ function Buy_tokens(props, connect) {
         from: acc,
         value: value,
       });
+      toast.success("Buy Successfully !")
       setSpinner(false);
     } catch (e) {
       console.log("Error While Convert To ether", e);
@@ -155,11 +157,14 @@ function Buy_tokens(props, connect) {
         .send({
           from: acc,
         });
+        toast.success("Approve Successfully !")
 
       let getValue = await nftContractOf.methods.BuyWithUSDT(value).send({
         from: acc,
       });
       setSpinner(false);
+      toast.success("Buy Successfully !")
+
     } catch (e) {
       console.log("Error While Convert To ether", e);
       setSpinner(false);

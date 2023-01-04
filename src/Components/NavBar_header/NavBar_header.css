@@ -8,9 +8,14 @@
     border-radius: 8px !important;
     font-size: 18px !important;
     font-weight: bold;
-    color: black !important;
+    color: #fff !important;
+   
 }
 
+.navbarnav{
+    background-color: transparent !important;
+    position:absolute;
+}
 
 .navbar-dark .navbar-toggler {
     color: rgba(255,255,255,.55);
@@ -21,4 +26,8 @@
 .logo_nav{
     width: 70px !important;
  
+}
+.navstyle{
+    display: flex;
+    justify-content: end;
 }

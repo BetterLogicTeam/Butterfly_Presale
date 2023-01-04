@@ -13,63 +13,28 @@ import head3 from "../Assets/head3.svg";
 import head4 from "../Assets/head4.svg";
 import head5 from "../Assets/head5.svg";
 import head6 from "../Assets/head6.svg";
-import bf from "../Assets/bf.png"
+import bf from "../Assets/bf.png";
 
 function NavBar_header({ BtTxt }) {
   // const [BtTxt, setBtTxt] = useState("Connect")
 
   return (
     <div>
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        bg="light"
-        className=""
-        variant="dark"
-      >
-        <Container className="nav_bar_abort">
-          <Navbar.Brand href="#home">
-            <img src={bf} alt="" className="logo_nav" />
-          </Navbar.Brand>
+      <Navbar collapseOnSelect expand="lg"  variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              {/* <Nav.Link href="#features">Features</Nav.Link> */}
-              {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-              {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
+              {/* <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
             <Nav>
-              {/* <Nav.Link href="#deets">
-                <div className="socials_icons">
-                  <div className="icons_img">
-                    <img src={head1} alt="" />
-                    <img src={head2} alt="" />
-                    <img src={head3} alt="" />
-                    <img src={head4} alt="" />
-                    <img src={head5} alt="" />
-                    <img src={head6} alt="" />
-                  </div>
-                </div>
-              </Nav.Link> */}
-              {BtTxt == "Connect" ? (
-                <></>
-              ) : (
-                <>
-                  <Nav.Link eventKey={2} href="#memes">
-                    <button className="wallet_button_header">{BtTxt}</button>
-                  </Nav.Link>
-                </>
-              )}
+              
+              
+              {/* <Nav.Link eventKey={2} href="#memes">
+              Dank memes
+            </Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

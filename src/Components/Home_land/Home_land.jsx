@@ -16,19 +16,15 @@ import {
   USDTabi,
   USDT_contract,
 } from "../../Contracts/contract";
-
-
-
+import NavBar_header from "../NavBar_header/NavBar_header";
 
 function Home_land({ BtTxt, setBtTxt }) {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow1, setModalShow1] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
-  const [usdt, setUSDT] = useState("loading");
-  const [ETH, setETH] = useState("loading");
-  const [TokenPercentce, setTokenPercent] = useState("loading");
-
- 
+  const [usdt, setUSDT] = useState("--");
+  const [ETH, setETH] = useState("--");
+  const [TokenPercentce, setTokenPercent] = useState("--");
 
   const getaccount = async () => {
     let acc = await loadWeb3();
@@ -74,7 +70,20 @@ function Home_land({ BtTxt, setBtTxt }) {
 
   return (
     <div>
+      {/* <NavBar_header BtTxt={BtTxt} /> */}
+
       <div className="container-fluid main_home_land_bg">
+        <div className="text-left" style={{textAlign:"end"}}>
+          {BtTxt == "Connect" ? (
+            <></>
+          ) : (
+            <>
+              <button className="wallet_button_header text-white">
+                {BtTxt}
+              </button>
+            </>
+          )}
+        </div>
         <div className="row">
           <div className="col-md-6 left_connent text-start">
             <h1 className="main_home_heading text-white">
@@ -154,6 +163,11 @@ function Home_land({ BtTxt, setBtTxt }) {
                         onHide={() => setModalShow2(false)}
                         ethdata="false"
                       />
+
+                    </div>
+                    <div className="new_btn text-white">
+                      <p>How to Buy</p>
+                      <p>New to Crypto?</p>
                     </div>
                   </>
                 ) : (
