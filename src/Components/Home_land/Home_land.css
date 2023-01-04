@@ -21,7 +21,7 @@
 .main_home_heading{
     font-size: 46px;
     color: #000;
-   font-family: 'Poppins', sans-serif;
+   /* font-family: 'Poppins', sans-serif; */
     margin-top: 12px;  
     font-weight: bold;
 }
@@ -31,7 +31,7 @@
     font-size: 16px;
     color: #000;
     line-height: 160%;
-    font-family: poppins-regular;
+    /* font-family: poppins-regular; */
     padding-top: 6px;
 }
 
@@ -116,6 +116,7 @@
     font-weight: 500;
     color: white !important;
     padding: 13px 20px !important;
+    border: none !important;
     /* width: 100% !important; */
     /* text-align: center !important; */
 

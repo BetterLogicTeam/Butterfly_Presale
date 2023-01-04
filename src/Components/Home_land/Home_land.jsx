@@ -16,8 +16,29 @@ import {
   USDTabi,
   USDT_contract,
 } from "../../Contracts/contract";
+import Web3Modal from "web3modal";
+import Web3 from "web3";
+import { ethers } from "ethers";
+import {CoinbaseWalletSDK} from '@coinbase/wallet-sdk'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+// import { signIn } from 'next-auth/react';
+import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi';
+// import { useRouter } from 'next/router';
+// import { useAuthRequestChallengeEvm } from '@moralisweb3/next';
 
-function Home_land({BtTxt,setBtTxt}) {
+const providerOptions = {
+  coinbasewallet:{
+    package:CoinbaseWalletSDK,
+    options:{
+      appName:"Butterfly",
+      // infuraId:{3:"https://ropsten.infura.io/v3/fefnefnesfe"}
+      infuraId:"https://ipfs.infura.io:5001/api/v0"
+
+    }
+  }
+};
+
+function Home_land({ BtTxt, setBtTxt }) {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow1, setModalShow1] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
@@ -25,11 +46,19 @@ function Home_land({BtTxt,setBtTxt}) {
   const [ETH, setETH] = useState("loading");
   const [TokenPercentce, setTokenPercent] = useState("loading");
 
-
-
-
-
-
+  const connectWallet = async () => {
+    try {
+      let web3modal = new Web3Modal({
+        cacheProvider: true,
+        providerOptions,
+      });
+      const web3modalInstance=await web3modal.connect()
+      const web3modalProvider= new ethers.providers.Web3Provider(web3modalInstance)
+      console.log("web3modalProvider", web3modalProvider);
+    } catch (e) {
+      console.log("Error While connect Wallet", e);
+    }
+  };
 
   const getaccount = async () => {
     let acc = await loadWeb3();
@@ -44,54 +73,50 @@ function Home_land({BtTxt,setBtTxt}) {
         acc?.substring(0, 4) + "..." + acc?.substring(acc?.length - 4);
 
       setBtTxt(myAcc);
-      const web3 = window.web3; 
+      const web3 = window.web3;
       let ICOContractOf = new web3.eth.Contract(contractabi, ico_contract);
       let USTContractOf = new web3.eth.Contract(USDTabi, USDT_contract);
       let tokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
 
-      let getUSDTValue = await USTContractOf.methods.balanceOf(ico_contract).call();
-      let gettokenValue = await tokenContractOf.methods.balanceOf(ico_contract).call();
+      let getUSDTValue = await USTContractOf.methods
+        .balanceOf(ico_contract)
+        .call();
+      let gettokenValue = await tokenContractOf.methods
+        .balanceOf(ico_contract)
+        .call();
 
-     let USDTvalue = (getUSDTValue/1000000).toString();
-     let tokenvalue = web3.utils.fromWei(gettokenValue);
-      let tokenpercentag= (tokenvalue/200000000*100);
-      let tokenpercentag1= 100-tokenpercentag;
+      let USDTvalue = (getUSDTValue / 1000000).toString();
+      let tokenvalue = web3.utils.fromWei(gettokenValue);
+      let tokenpercentag = (tokenvalue / 200000000) * 100;
+      let tokenpercentag1 = 100 - tokenpercentag;
 
-     setUSDT(USDTvalue);
-     console.log(USDTvalue,"USDTValue");
+      setUSDT(USDTvalue);
+      console.log(USDTvalue, "USDTValue");
 
+      let ETHBalance = await web3.eth.getBalance(ico_contract.toString());
+      let ETHValue = web3.utils.fromWei(ETHBalance);
+      console.log(ETHValue, "ETHBalance");
+      setETH(ETHValue);
 
-     
-     let ETHBalance=await web3.eth.getBalance(ico_contract.toString());
-     let ETHValue = web3.utils.fromWei(ETHBalance);
-     console.log(ETHValue,"ETHBalance");
-     setETH(ETHValue);
-  
-
-     setTokenPercent(tokenpercentag1)
-   
-    
-
-      
-
-
-     
+      setTokenPercent(tokenpercentag1);
     }
   };
-
 
   return (
     <div>
       <div className="container-fluid main_home_land_bg">
         <div className="row">
           <div className="col-md-6 left_connent text-start">
-            
             <h1 className="main_home_heading text-white">
-            Welcome to the PreSale of Boston Dynamics Inu 
+              Welcome to the PreSale of Boston Dynamics Inu
             </h1>
             <p className="home_land_para text-white">
-            Swap your ETH for $BD1NU at a very discounted price in this Prosaic. You will not regret it. You will get rich. This is an example text. this text will be changes. for test design purposes only.
+              Swap your ETH for $BD1NU at a very discounted price in this
+              Prosaic. You will not regret it. You will get rich. This is an
+              example text. this text will be changes. for test design purposes
+              only.
             </p>
+            {/* <button  className="btn btn-success" onClick={()=>connectWallet()}>Connect </button> */}
             {/* <div className="d-flex">
               <img src={play} alt="" />
               <h3 className="play_headig">Watch a short Explainer Video</h3>
@@ -107,7 +132,10 @@ function Home_land({BtTxt,setBtTxt}) {
               <div className="progress_bar_nav mt-3">
                 <h4 className="progress_number">{TokenPercentce}% SOLD</h4>
                 <div className="lower_pro d-flex">
-                  <div className="upper_pro" style={{'--width' : `${TokenPercentce}%`}}></div>
+                  <div
+                    className="upper_pro"
+                    style={{ "--width": `${TokenPercentce}%` }}
+                  ></div>
                 </div>
 
                 <div className="usdt_contntet text-white text-bold">
