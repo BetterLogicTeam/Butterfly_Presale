@@ -17,6 +17,46 @@ import {
   USDT_contract,
 } from "../../Contracts/contract";
 import NavBar_header from "../NavBar_header/NavBar_header";
+import Web3Modal from "web3modal";
+// import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletLink from "walletlink";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import Web3 from 'web3';
+
+
+
+
+const providerOptions = {
+	binancechainwallet: {
+		package: true
+	  },
+	walletconnect: {
+		package: WalletConnectProvider,
+		options: {
+		  infuraId: "765d4237ce7e4d999f706854d5b66fdc"
+		}
+	  },
+	  walletlink: {
+		package: WalletLink, 
+		options: {
+		  appName: "Net2Dev NFT Minter", 
+		  infuraId: "765d4237ce7e4d999f706854d5b66fdc", 
+		  rpc: "", 
+		  chainId: 5, 
+		  appLogoUrl: null, 
+		  darkMode: true 
+		}
+	  },
+};
+
+const web3Modal = new Web3Modal({
+  network: "GoerliETH",
+  theme: "light",
+  cacheProvider: true,
+  providerOptions 
+});
+
+
 
 function Home_land({ BtTxt, setBtTxt }) {
   const [modalShow, setModalShow] = React.useState(false);
@@ -28,18 +68,23 @@ function Home_land({ BtTxt, setBtTxt }) {
 
   const getaccount = async () => {
     let acc = await loadWeb3();
-    if (acc == "No Wallet") {
-      // toast.error('please install metamask')
-      setBtTxt("please install metamask");
-    } else if (acc == "Wrong Network") {
-      // toast.error('Wrong Network')
-      setBtTxt("Wrong Network");
-    } else {
+    // if (acc == "No Wallet") {
+    //   // toast.error('please install metamask')
+    //   setBtTxt("please install metamask");
+    // } else if (acc == "Wrong Network") {
+    //   // toast.error('Wrong Network')
+    //   setBtTxt("Wrong Network");
+    // } else {
+      var provider = await web3Modal.connect();
+      var web3 = new Web3(provider); 
+      await window.ethereum.send('eth_requestAccounts'); 
+      var accounts = await web3.eth.getAccounts(); 
+      let account = accounts[0]; 
       let myAcc =
-        acc?.substring(0, 4) + "..." + acc?.substring(acc?.length - 4);
+        account?.substring(0, 4) + "..." + account?.substring(account?.length - 4);
 
       setBtTxt(myAcc);
-      const web3 = window.web3;
+      // const web3 = window.web3;
       let ICOContractOf = new web3.eth.Contract(contractabi, ico_contract);
       let USTContractOf = new web3.eth.Contract(USDTabi, USDT_contract);
       let tokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
@@ -65,9 +110,20 @@ function Home_land({ BtTxt, setBtTxt }) {
       setETH(ETHValue);
 
       setTokenPercent(tokenpercentag1);
-    }
+    // }
   };
 
+
+  async function connectwallet() { 
+	  var provider = await web3Modal.connect();
+      var web3 = new Web3(provider); 
+      await window.ethereum.send('eth_requestAccounts'); 
+      var accounts = await web3.eth.getAccounts(); 
+      let account = accounts[0]; 
+      console.log("Account",account);
+    
+      // contract = new web3.eth.Contract(ABI, ADDRESS);
+}
   return (
     <div>
       {/* <NavBar_header BtTxt={BtTxt} /> */}
