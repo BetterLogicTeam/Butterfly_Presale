@@ -87,10 +87,12 @@ function Home_land({BtTxt,setBtTxt}) {
           <div className="col-md-6 left_connent text-start">
             
             <h1 className="main_home_heading text-white">
-            Welcome to the PreSale of Boston Dynamics Inu 
+            Welcome to the PreSale of <br></br>Boston Dynamics Inu 
             </h1>
             <p className="home_land_para text-white">
-            Swap your ETH for $BD1NU at a very discounted price in this Prosaic. You will not regret it. You will get rich. This is an example text. this text will be changes. for test design purposes only.
+            Buy $BDINU tokens at a very discounted price in the Presale.
+            Swap ETH for $BDINU without any fees at the lowest price.
+            During the Presale $BDINU is available for only $0.21 compared to the public sale for $0.53
             </p>
             {/* <div className="d-flex">
               <img src={play} alt="" />
