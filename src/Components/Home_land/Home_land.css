@@ -1,10 +1,12 @@
 .main_home_land_bg{
-    background-image: url(../Assets/bg5.png);
+    background-image: url(../Assets/bgsimple.PNG);
     /* height: 700px; */
     padding: 50px 20px  !important;
-    height: 125vh !important;
+    height: auto !important;
     /* background-position: 20% 40%; */
     background-repeat: no-repeat !important;
+    /* background-color: #484c54 !important; */
+
     background-size: cover !important;
 
 }
@@ -244,9 +246,11 @@
     width: 98% !important;
 }
 
-@media only screen and (max-width:600px){
+@media only screen and (max-width:790px){
     .main_home_land_bg{
-        background-image: url(../Assets/bg5.png);
+        /* background-image: url(../Assets/bg5.png); */
+    background-color: #484c54 !important;
+
         /* height: 700px; */
         padding: 50px 20px  !important;
         height: auto !important;
@@ -263,9 +267,21 @@
         width: 100%;
         padding: 10px 0px;
     }
+    .dog_img{
+        margin-top: 0rem;
+        margin-left: -1rem !important;
+        width:18rem  !important
+    }
     
 }
 
+
+.dog_img{
+    /* margin-top: -12rem; */
+    width:20rem ;
+    transform: scaleX(-1);
+    margin-left: 15rem;
+}
 
 .new_btn{
     display: flex;

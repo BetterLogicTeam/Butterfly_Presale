@@ -8,6 +8,7 @@ import Buy_tokens from "../Buy_tokens/Buy_tokens";
 import usd from "../Assets/usd.svg";
 import metamask from "../Assets/metamask.png";
 import { loadWeb3 } from "../apis/api";
+import dog from '../Assets/bgDog.PNG'
 import {
   contractabi,
   ico_contract,
@@ -153,6 +154,7 @@ function Home_land({ BtTxt, setBtTxt }) {
               Presale $BDINU is available for only $0.21 compared to the public
               sale for $0.53
             </p>
+            <img src={dog} alt=""  className="dog_img" />
             {/* <button  className="btn btn-success" onClick={()=>connectWallet()}>Connect </button> */}
             {/* <div className="d-flex">
               <img src={play} alt="" />
