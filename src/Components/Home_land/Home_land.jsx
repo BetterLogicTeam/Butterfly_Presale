@@ -21,42 +21,37 @@ import Web3Modal from "web3modal";
 // import WalletConnectProvider from "@walletconnect/web3-provider";
 import WalletLink from "walletlink";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import Web3 from 'web3';
-
-
-
+import Web3 from "web3";
 
 const providerOptions = {
-	binancechainwallet: {
-		package: true
-	  },
-	walletconnect: {
-		package: WalletConnectProvider,
-		options: {
-		  infuraId: "765d4237ce7e4d999f706854d5b66fdc"
-		}
-	  },
-	  walletlink: {
-		package: WalletLink, 
-		options: {
-		  appName: "Net2Dev NFT Minter", 
-		  infuraId: "765d4237ce7e4d999f706854d5b66fdc", 
-		  rpc: "", 
-		  chainId: 5, 
-		  appLogoUrl: null, 
-		  darkMode: true 
-		}
-	  },
+  binancechainwallet: {
+    package: true,
+  },
+  walletconnect: {
+    package: WalletConnectProvider,
+    options: {
+      infuraId: "765d4237ce7e4d999f706854d5b66fdc",
+    },
+  },
+  walletlink: {
+    package: WalletLink,
+    options: {
+      appName: "Net2Dev NFT Minter",
+      infuraId: "765d4237ce7e4d999f706854d5b66fdc",
+      rpc: "",
+      chainId: 5,
+      appLogoUrl: null,
+      darkMode: true,
+    },
+  },
 };
 
 const web3Modal = new Web3Modal({
   network: "GoerliETH",
   theme: "light",
   cacheProvider: true,
-  providerOptions 
+  providerOptions,
 });
-
-
 
 function Home_land({ BtTxt, setBtTxt }) {
   const [modalShow, setModalShow] = React.useState(false);
@@ -65,71 +60,78 @@ function Home_land({ BtTxt, setBtTxt }) {
   const [usdt, setUSDT] = useState("--");
   const [ETH, setETH] = useState("--");
   const [TokenPercentce, setTokenPercent] = useState("--");
+  const [contset, setcontset] = useState(false);
+
 
   const getaccount = async () => {
     let acc = await loadWeb3();
-    // if (acc == "No Wallet") {
-    //   // toast.error('please install metamask')
-    //   setBtTxt("please install metamask");
-    // } else if (acc == "Wrong Network") {
-    //   // toast.error('Wrong Network')
-    //   setBtTxt("Wrong Network");
-    // } else {
-      var provider = await web3Modal.connect();
-      var web3 = new Web3(provider); 
-      await window.ethereum.send('eth_requestAccounts'); 
-      var accounts = await web3.eth.getAccounts(); 
-      let account = accounts[0]; 
-      let myAcc =
-        account?.substring(0, 4) + "..." + account?.substring(account?.length - 4);
+    if (acc == "No Wallet") {
+      // toast.error('please install metamask')
+      setBtTxt("please install metamask");
+    } else if (acc == "Wrong Network") {
+      // toast.error('Wrong Network')
+      setBtTxt("Wrong Network");
+    } else {
+    // var provider = await web3Modal.connect();
+    // var web3 = new Web3(provider);
+    // await window.ethereum.send("eth_requestAccounts");
+    // var accounts = await web3.eth.getAccounts();
+    // let account = accounts[0];
+    let myAcc =
+      acc?.substring(0, 4) +
+      "..." +
+      acc?.substring(acc?.length - 4);
 
-      setBtTxt(myAcc);
-      // const web3 = window.web3;
-      let ICOContractOf = new web3.eth.Contract(contractabi, ico_contract);
-      let USTContractOf = new web3.eth.Contract(USDTabi, USDT_contract);
-      let tokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
+    setBtTxt(myAcc);
+    setcontset(true)
+    const web3 = window.web3;
+    let ICOContractOf = new web3.eth.Contract(contractabi, ico_contract);
+    let USTContractOf = new web3.eth.Contract(USDTabi, USDT_contract);
+    let tokenContractOf = new web3.eth.Contract(tokenabi, token_contract);
 
-      let getUSDTValue = await USTContractOf.methods
-        .balanceOf(ico_contract)
-        .call();
-      let gettokenValue = await tokenContractOf.methods
-        .balanceOf(ico_contract)
-        .call();
+    let getUSDTValue = await USTContractOf.methods
+      .balanceOf(ico_contract)
+      .call();
+    let gettokenValue = await tokenContractOf.methods
+      .balanceOf(ico_contract)
+      .call();
 
-      let USDTvalue = (getUSDTValue / 1000000).toString();
-      let tokenvalue = web3.utils.fromWei(gettokenValue);
-      let tokenpercentag = (tokenvalue / 200000000) * 100;
-      let tokenpercentag1 = 100 - tokenpercentag;
+    let USDTvalue = (getUSDTValue / 1000000).toString();
+    USDTvalue = parseFloat(USDTvalue).toFixed(2);
+    let tokenvalue = web3.utils.fromWei(gettokenValue);
+    let tokenpercentag = (tokenvalue / 200000000) * 100;
+    let tokenpercentag1 = 100 - tokenpercentag;
+    tokenpercentag1 = parseFloat(tokenpercentag1).toFixed(2);
 
-      setUSDT(USDTvalue);
-      console.log(USDTvalue, "USDTValue");
+    setUSDT(USDTvalue);
+    console.log(USDTvalue, "USDTValue");
 
-      let ETHBalance = await web3.eth.getBalance(ico_contract.toString());
-      let ETHValue = web3.utils.fromWei(ETHBalance);
-      console.log(ETHValue, "ETHBalance");
-      setETH(ETHValue);
+    let ETHBalance = await web3.eth.getBalance(ico_contract.toString());
+    let ETHValue = web3.utils.fromWei(ETHBalance);
+    ETHValue = parseFloat(ETHValue).toFixed(2);
+    console.log(ETHValue, "ETHBalance");
+    setETH(ETHValue);
 
-      setTokenPercent(tokenpercentag1);
-    // }
+    setTokenPercent(tokenpercentag1);
+    }
   };
 
+  async function connectwallet() {
+    var provider = await web3Modal.connect();
+    var web3 = new Web3(provider);
+    await window.ethereum.send("eth_requestAccounts");
+    var accounts = await web3.eth.getAccounts();
+    let account = accounts[0];
+    console.log("Account", account);
 
-  async function connectwallet() { 
-	  var provider = await web3Modal.connect();
-      var web3 = new Web3(provider); 
-      await window.ethereum.send('eth_requestAccounts'); 
-      var accounts = await web3.eth.getAccounts(); 
-      let account = accounts[0]; 
-      console.log("Account",account);
-    
-      // contract = new web3.eth.Contract(ABI, ADDRESS);
-}
+    // contract = new web3.eth.Contract(ABI, ADDRESS);
+  }
   return (
-    <div>
+    <div className="main_home_land_bg">
       {/* <NavBar_header BtTxt={BtTxt} /> */}
 
-      <div className="container-fluid main_home_land_bg">
-        <div className="text-left" style={{textAlign:"end"}}>
+      <div className="container ">
+        <div className="text-left" style={{ textAlign: "end" }}>
           {BtTxt == "Connect" ? (
             <></>
           ) : (
@@ -141,15 +143,15 @@ function Home_land({ BtTxt, setBtTxt }) {
           )}
         </div>
         <div className="row">
-          <div className="col-md-6 left_connent text-start">
+          <div className="col-md-7 left_connent text-start">
             <h1 className="main_home_heading text-white">
-              Welcome to the PreSale of Boston Dynamics Inu
+              Welcome to the PreSale of <br /> Boston Dynamics Inu
             </h1>
             <p className="home_land_para text-white">
-              Swap your ETH for $BD1NU at a very discounted price in this
-              Prosaic. You will not regret it. You will get rich. This is an
-              example text. this text will be changes. for test design purposes
-              only.
+              Buy $BDINU tokens at a very discounted price in the Presale. Swap
+              ETH for $BDINU without any fees at the lowest price. During the
+              Presale $BDINU is available for only $0.21 compared to the public
+              sale for $0.53
             </p>
             {/* <button  className="btn btn-success" onClick={()=>connectWallet()}>Connect </button> */}
             {/* <div className="d-flex">
@@ -158,10 +160,13 @@ function Home_land({ BtTxt, setBtTxt }) {
             </div> */}
           </div>
 
-          <div className="col-md-6 right_coonent mt-4 mt-md-0">
+          <div
+            className="col-md-5 right_coonent mt-5 mt-md-0"
+            style={{ marginTop: "2rem" }}
+          >
             <div className="right_content_card">
-              <span className="card_heading_span">Presale ending soon</span>
-              <div className="text_days fs-4 ">
+              <h4 className="card_heading_span pt-3">Presale ending soon</h4>
+              <div className="text_days fs-5 ">
                 4 Days 8 Hours 59 Minutes remaining until presale ends
               </div>
               <div className="progress_bar_nav mt-3">
@@ -182,23 +187,32 @@ function Home_land({ BtTxt, setBtTxt }) {
 
                 <div className="box_text text-white">
                   <span>
-                    First CEX launch will go live on Wednesday 11th Jan 2023
+                    Public Exchange launch goes live on Wednesday 1st March
+                    2023.
                   </span>
                 </div>
 
-                {BtTxt !== "Connect" ? (
+                {contset == true ? (
                   <>
                     <div className="d-flex justify-content-center my-4">
-                      <button
+                      {/* <button
                         onClick={() => setModalShow1(true)}
                         className="connect_to_wallet_home iso_btn"
                       >
                         {" "}
                         <img src={eth} alt="" /> Buy with ETH
+                      </button> */}
+                      <button
+                        _ngcontent-bhd-c59=""
+                        class="btn btn-eth crypto-btn my-1 py-2 px-1 w-80 my-2"
+                        onClick={() => setModalShow1(true)}
+                      >
+                        <img _ngcontent-bhd-c59="" src={eth} height="40" />
+                        <span _ngcontent-bhd-c59="">Buy with ETH</span>
                       </button>
 
                       <Buy_tokens
-                        connect="convert to ETH"
+                        connect="Convert ETH"
                         show={modalShow1}
                         onHide={() => setModalShow1(false)}
                         ethdata="true"
@@ -206,20 +220,27 @@ function Home_land({ BtTxt, setBtTxt }) {
                     </div>
                     <div className="d-flex justify-content-center my-4">
                       <button
+                        _ngcontent-bhd-c59=""
+                        class="btn btn-eth crypto-btn my-1 py-2 px-1 w-80 my-2"
+                        onClick={() => setModalShow2(true)}
+                      >
+                        <img _ngcontent-bhd-c59="" src={usd} height="40" />
+                        <span _ngcontent-bhd-c59="">Buy with USDT</span>
+                      </button>
+                      {/* <button
                         onClick={() => setModalShow2(true)}
                         className="connect_to_wallet_home iso_btn"
                       >
                         {" "}
                         <img src={usd} alt="" /> Buy with USDT
-                      </button>
+                      </button> */}
 
                       <Buy_tokens
-                        connect="convert to USDT"
+                        connect="Convert to USDT"
                         show={modalShow2}
                         onHide={() => setModalShow2(false)}
                         ethdata="false"
                       />
-
                     </div>
                     <div className="new_btn text-white">
                       <p>How to Buy</p>
@@ -230,10 +251,12 @@ function Home_land({ BtTxt, setBtTxt }) {
                   <>
                     <div className="d-flex justify-content-center my-4">
                       <button
+                        _ngcontent-bhd-c59=""
+                        class="btn btn-eth crypto-btn my-1 py-2 px-1 w-80 my-2"
                         onClick={() => getaccount()}
-                        className="connect_to_wallet_home iso_btn"
                       >
-                        <img src={metamask} alt="" width="15%" /> connect wallet
+                        <img _ngcontent-bhd-c59="" src={metamask} height="40" />
+                        <span _ngcontent-bhd-c59="">Connect wallet</span>
                       </button>
 
                       {/* <Connect_wallet
