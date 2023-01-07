@@ -4,6 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import { loadWeb3 } from "../apis/api";
 import eth from "../Assets/eth.svg";
 import dt from "../Assets/dt.svg";
+import d2d from "../Assets/bdinulogo.png";
+import {RxCross1} from 'react-icons/rx'
+
 import {
   contractabi,
   ico_contract,
@@ -12,6 +15,7 @@ import {
   USDTabi,
   USDT_contract,
 } from "../../Contracts/contract";
+import { toast } from "react-toastify";
 
 function Buy_tokens(props, connect) {
   const [GetEthValue, setGetEthValue] = useState(0);
@@ -84,6 +88,7 @@ function Buy_tokens(props, connect) {
         from: acc,
         value: value,
       });
+      toast.success("Purchase Successful! 🎉")
       setSpinner(false);
     } catch (e) {
       console.log("Error While Convert To ether", e);
@@ -155,11 +160,14 @@ function Buy_tokens(props, connect) {
         .send({
           from: acc,
         });
+        toast.success("Approve Successfully!")
 
       let getValue = await nftContractOf.methods.BuyWithUSDT(value).send({
         from: acc,
       });
       setSpinner(false);
+      toast.success("Purchase Successful! 🎉")
+
     } catch (e) {
       console.log("Error While Convert To ether", e);
       setSpinner(false);
@@ -178,7 +186,9 @@ function Buy_tokens(props, connect) {
           >
             <Modal.Header className="connect_to_wallet_bgh" closeButton>
               <Modal.Title id="contained-modal-title-vcenter text-center text-white">
-                <span className="text-white">EXCHANGE</span>
+
+                <span className="text-white EXCHANGE" >EXCHANGE</span>
+                {/* <RxCross1/> */}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -195,7 +205,7 @@ function Buy_tokens(props, connect) {
                   <span className="input_img ">
                     {" "}
                     <img src={eth} alt="" />
-                    <span className="ms-1 fw-bold">ETH</span>
+                    <span className="ms-1 fw-bold EXCHANGE">ETH</span>
                   </span>
                 </div>
               </div>
@@ -211,16 +221,16 @@ function Buy_tokens(props, connect) {
                   />
                   <span className="input_img ">
                     {" "}
-                    <img src={dt} className="dt2" alt="" />
-                    <span className="ms-1 fw-bold">D2T</span>
+                    <img src={d2d} className="dt2 mt-2" alt="" />
+                    <span className="ms-1 fw-bold EXCHANGE">BDINU</span>
                   </span>
                 </div>
-                <span className="text-danger">{Error}</span>
+                <span className="text-danger EXCHANGE">{Error}</span>
               </div>
             </Modal.Body>
             <Modal.Footer className=" py-2 d-block">
               {/* <Button onClick={props.onHide}>Close</Button> */}
-              <div className="d-flex justify-content-center">
+              {/* <div className="d-flex justify-content-center"> */}
                 <button
                   onClick={() => convertToEth()}
                   className=" convert_to_eth iso_btn"
@@ -239,10 +249,10 @@ function Buy_tokens(props, connect) {
                       </div>
                     </>
                   ) : (
-                    <>{props.connect}</>
+                    <>Convert ETH</>
                   )}
                 </button>
-              </div>
+              {/* </div> */}
             </Modal.Footer>
           </Modal>
         </>
@@ -256,7 +266,7 @@ function Buy_tokens(props, connect) {
           >
             <Modal.Header className="connect_to_wallet_bgh" closeButton>
               <Modal.Title id="contained-modal-title-vcenter text-center text-white">
-                <span className="text-white">EXCHANGE</span>
+                <span className="text-white EXCHANGE">EXCHANGE</span>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -273,7 +283,7 @@ function Buy_tokens(props, connect) {
                   <span className="input_img ">
                     {" "}
                     <img src={eth} alt="" />
-                    <span className="ms-1 fw-bold">USDT</span>
+                    <span className="ms-1 fw-bold EXCHANGE">USDT</span>
                   </span>
                 </div>
               </div>
@@ -289,11 +299,11 @@ function Buy_tokens(props, connect) {
                   />
                   <span className="input_img ">
                     {" "}
-                    <img src={dt} className="dt2" alt="" />
-                    <span className="ms-1 fw-bold">D2T</span>
+                    <img src={d2d} className="dt2 mt-2" alt="" />
+                    <span className="ms-1 fw-bold EXCHANGE">BDINU</span>
                   </span>
                 </div>
-                <span className="text-danger">{Error}</span>
+                <span className="text-danger EXCHANGE">{Error}</span>
 
               </div>
             </Modal.Body>

@@ -1,10 +1,12 @@
 .main_home_land_bg{
-    background-image: url(../Assets/bg5.png);
+    background-image: url(../Assets/bgSiple2.PNG);
     /* height: 700px; */
     padding: 50px 20px  !important;
-    height: 100vh !important;
+    height: auto !important;
     /* background-position: 20% 40%; */
     background-repeat: no-repeat !important;
+    /* background-color: #484c54 !important; */
+
     background-size: cover !important;
 
 }
@@ -12,7 +14,8 @@
 
 .fisrt_heading{
     font-size: 18px;
-   font-family: 'Poppins', sans-serif;
+    font-family: 'Mina', sans-serif;
+
     padding-bottom: 20px;
     color: #19b1bd;
 }
@@ -21,7 +24,7 @@
 .main_home_heading{
     font-size: 46px;
     color: #000;
-   font-family: 'Poppins', sans-serif;
+    font-family: 'Mina', sans-serif;
     margin-top: 12px;  
     font-weight: bold;
 }
@@ -31,7 +34,7 @@
     font-size: 16px;
     color: #000;
     line-height: 160%;
-    font-family: poppins-regular;
+    font-family: 'Mina', sans-serif;
     padding-top: 6px;
 }
 
@@ -51,14 +54,17 @@
     margin: auto;
     width: 320px;
     padding: 10px 0px;
+    margin-top: 1rem;
 }
 
 
 .card_heading_span{
     color: white !important;
     font-weight: bold;
-    font-size: 28px !important;
+    font-size: 25px !important;
     text-transform:capitalize  !important;
+    font-family: 'Mina', sans-serif;
+
 
 }
 
@@ -67,12 +73,16 @@
     color: white !important;
     margin-bottom: 0px;
     line-height: 30px !important;
+    font-family: 'Mina', sans-serif;
+
 }
 
 
 .progress_number{
     color: #e25c5c !important;
     font-weight: bold !important;
+    font-family: 'Mina', sans-serif;
+
 }
 
 .lower_pro{
@@ -81,6 +91,8 @@
     border-radius: 24px!important;
     height: 16px;
     margin: 12px 42px 0!important;
+    font-family: 'Mina', sans-serif;
+
 }
 
 
@@ -93,6 +105,8 @@
     display: block;
     line-height: 1;
     position: relative;
+    font-family: 'Mina', sans-serif;
+
 }
 
 
@@ -102,6 +116,8 @@
     border-radius: 10px;
     padding: 16px;
     margin: 12px 42px 0!important; 
+    font-family: 'Mina', sans-serif;
+
 }
 
 
@@ -116,6 +132,7 @@
     font-weight: 500;
     color: white !important;
     padding: 13px 20px !important;
+    border: none !important;
     /* width: 100% !important; */
     /* text-align: center !important; */
 
@@ -137,9 +154,20 @@
     justify-content: center !important;
     align-items: center !important;
 }
+.EXCHANGE{
+    font-family: 'Mina', sans-serif;
+
+}
 
 .labal_heading{
     color: rgb(75, 51, 42) !important;
+    font-family: 'Mina', sans-serif;
+
+}
+.title_Exchange{
+    display: flex;
+    justify-content: space-evenly !important;
+    align-items: center;
 }
 
 .seeling_tokens{
@@ -161,7 +189,7 @@
 
 .input_img{
     position: absolute;
-    top: 54%;
+    top: 50%;
     right: 1rem;
     transform: translateY(-50%);
     display: flex;
@@ -188,7 +216,7 @@
     width: 100%  !important;
     border-radius: 10px;
     background: #19b1bd;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     line-height: 1;
     transition: all .25s ease-in-out;
     font-weight: 500;
@@ -210,15 +238,19 @@
     border: 2px solid #009393 !important ;
     background-color: transparent !important;
     color:#009393 !important ;
+    font-family: 'Mina', sans-serif;
+
     
 }
 .iso_btn{
-    width: 15rem !important;
+    width: 98% !important;
 }
 
-@media only screen and (max-width:600px){
+@media only screen and (max-width:790px){
     .main_home_land_bg{
-        background-image: url(../Assets/bg5.png);
+        /* background-image: url(../Assets/bg5.png); */
+    background-color: #484c54 !important;
+
         /* height: 700px; */
         padding: 50px 20px  !important;
         height: auto !important;
@@ -227,5 +259,68 @@
         background-size: cover !important;
     
     }
+    .right_content_card{
+        background-color: #131317;
+        border-radius: 10px;
+        min-height: 500px;
+        margin: auto;
+        width: 100%;
+        padding: 10px 0px;
+    }
+    .dog_img{
+        margin-top: 0rem;
+        margin-left: -1rem !important;
+        width:18rem  !important
+    }
     
+}
+
+
+.dog_img{
+    /* margin-top: -12rem; */
+    width:20rem ;
+    transform: scaleX(-1);
+    margin-left: 15rem;
+}
+
+.new_btn{
+    display: flex;
+    justify-content: space-evenly;
+    font-family: 'Mina', sans-serif;
+
+}
+.new_btn p{
+    text-decoration: underline;
+    font-weight: bold;
+    font-family: 'Mina', sans-serif;
+
+}
+
+.crypto-btn {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background: #19b1bd;
+}
+.py-2 {
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
+}
+.crypto-btn img {
+    border-right: 1px solid #585C7B;
+    margin-right: 20px;
+    padding-right: 6px;
+}
+.crypto-btn span {
+    color: #fff!important;
+    font-family: 'Mina', sans-serif;
+
+    font-size: 16px!important;
+    text-align: center;
+    width: 70%;
+    font-weight: bold;
+    
+}
+.w-80 {
+    width: 80%!important;
 }
