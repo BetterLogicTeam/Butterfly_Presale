@@ -245,8 +245,8 @@ function Home_land({ BtTxt, setBtTxt }) {
                       />
                     </div>
                     <div className="new_btn text-white">
-                      <p>How to Buy</p>
-                      <p>New to Crypto?</p>
+                    <p> <a href="https://www.youtube.com/watch?v=B8CbDQQyBV8" className="text-white">  How to Buy </a></p>
+                      <p> <a href="https://www.youtube.com/watch?v=B8CbDQQyBV8" className="text-white">  New to Crypto?</a> </p>
                     </div>
                   </>
                 ) : (
@@ -267,8 +267,8 @@ function Home_land({ BtTxt, setBtTxt }) {
                       /> */}
                     </div>
                     <div className="new_btn text-white">
-                      <p>How to Buy</p>
-                      <p>New to Crypto?</p>
+                      <p> <a href="https://www.youtube.com/watch?v=B8CbDQQyBV8" className="text-white">  How to Buy </a></p>
+                      <p> <a href="https://www.youtube.com/watch?v=B8CbDQQyBV8" className="text-white">  New to Crypto?</a> </p>
                     </div>
                   </>
                 )}
