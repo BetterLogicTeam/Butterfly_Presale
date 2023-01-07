@@ -2,7 +2,7 @@
     background-image: url(../Assets/bgSiple2.PNG);
     /* height: 700px; */
     padding: 50px 20px  !important;
-    height: auto !important;
+    height: 130vh !important;
     /* background-position: 20% 40%; */
     background-repeat: no-repeat !important;
     /* background-color: #484c54 !important; */
@@ -79,7 +79,7 @@
 
 
 .progress_number{
-    color: #e25c5c !important;
+    color: #06a84a !important;
     font-weight: bold !important;
     font-family: 'Mina', sans-serif;
 
@@ -98,7 +98,7 @@
 
 .upper_pro{
     width: var(--width);
-    background: #e25c5c;
+    background: #06a84a;
     border-radius: 10px;
     margin: 1px 0;
     transition: width .1s ease,background-color .1s ease;
@@ -246,14 +246,14 @@
     width: 98% !important;
 }
 
-@media only screen and (max-width:790px){
+@media only screen and (min-width:340px) and (max-width:790px){
     .main_home_land_bg{
         /* background-image: url(../Assets/bg5.png); */
     background-color: #484c54 !important;
 
         /* height: 700px; */
         padding: 50px 20px  !important;
-        height: auto !important;
+        height: 270vh  !important;
         /* background-position: 20% 40%; */
         background-repeat: no-repeat !important;
         background-size: cover !important;
@@ -293,6 +293,7 @@
     text-decoration: underline;
     font-weight: bold;
     font-family: 'Mina', sans-serif;
+    cursor: pointer !important;
 
 }
 
@@ -324,3 +325,63 @@
 .w-80 {
     width: 80%!important;
 }
+
+
+@media only screen and (min-width:800px) and (max-width:1150px){
+
+    .dog_img{
+        margin-left: 0px !important;
+    }
+
+  
+}
+
+@media only screen and (min-width:700px) and (max-width:800px){
+
+
+    .main_home_land_bg{
+        height: 138vh !important;
+    }
+}
+
+
+
+/* @media only screen and (min-width:1800px) and (max-width:5000px){
+.main_home_land_bg{
+    height: 200vh !important;
+}
+} */
+
+
+.right_coonent{
+    height: 500px !important;
+}
+
+@media only screen and (max-width:330px){
+    .main_home_land_bg{
+        height: 286vh !important;
+    }
+
+    .dog_img{
+        margin-top: 0rem;
+        margin-left: -1rem !important;
+        width:18rem  !important
+    }
+
+    .right_content_card{
+        background-color: #131317;
+        border-radius: 10px;
+        min-height: 500px;
+        margin: auto;
+        width: 100%;
+        padding: 10px 0px;
+    }
+    .dog_img{
+        margin-top: 0rem;
+        margin-left: -1rem !important;
+        width:18rem  !important
+    }
+    
+
+}
+

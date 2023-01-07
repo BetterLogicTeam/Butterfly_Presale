@@ -160,7 +160,7 @@ function Buy_tokens(props, connect) {
         .send({
           from: acc,
         });
-        toast.success("Approve Successfully!")
+        toast.success("Approved Successfully! 🎉")
 
       let getValue = await nftContractOf.methods.BuyWithUSDT(value).send({
         from: acc,

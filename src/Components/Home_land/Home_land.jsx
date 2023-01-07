@@ -164,7 +164,7 @@ function Home_land({ BtTxt, setBtTxt }) {
 
           <div
             className="col-md-5 right_coonent mt-5 mt-md-0"
-            style={{ marginTop: "2rem" }}
+            style={{ marginTop: "" }}
           >
             <div className="right_content_card">
               <h4 className="card_heading_span pt-3">Presale ending soon</h4>
